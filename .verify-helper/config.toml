@@ -1,0 +1,16 @@
+[languages.rs]
+verification_file_suffix = '_test.rs'
+compile = './.verify-helper/compile.bash {path}'
+execute = './.verify-helper/execute.bash {path}'
+list_dependencies = './.verify-helper/list-dependencies.bash {path}'
+bundle = './.verify-helper/bundle.bash {path}'
+
+#list_attributes = ''
+# Rustっぽい記法だとこんな感じだが...
+# ```toml
+# #![cfg_attr(
+#     oj_verify,
+#     oj_verify::problem("https://judge.yosupo.jp/problem/point_add_range_sum"),
+#     oj_verify::error(1e-9)
+# )]
+# ```
