@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  push:
+    branches:
+      - master
+      - staging
+      - trying
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup `stable-x86_64-unknown-linux-gnu`
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable-x86_64-unknown-linux-gnu
+          default: true
+          profile: minimal
+          components: rustfmt,clippy
+
+      - name: cargo-fmt (`lib`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path ./lib/Cargo.toml -- --check
+          toolchain: stable
+
+      - name: cargo-fmt (`verification/library-checker`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path ./verification/library-checker/Cargo.toml -- --check
+          toolchain: 1.41.0
+
+      - name: cargo-clippy (`lib`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path ./lib/Cargo.toml -- -D warnings
+          toolchain: stable
+
+      - name: cargo-clippy (`verification/library-checker`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path ./verification/library-checker/Cargo.toml -- -D warnings
+          toolchain: 1.41.0
+
+  verify:
+    name: Verify
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable-x86_64-unknown-linux-gnu
+          default: true
+          profile: minimal
+          components: rustfmt
+
+      - name: Install cargo-equip
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-equip
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+
+      - name: Install oj-verify
+        run: pip3 install -U online-judge-verify-helper
+
+      - name: oj-verify
+        run: oj-verify all
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
