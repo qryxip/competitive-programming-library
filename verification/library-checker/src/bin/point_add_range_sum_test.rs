@@ -12,10 +12,10 @@ fn main() {
         r#as: [i64; n],
     }
 
-    let mut bit = AdditiveFenwickTree::new(n);
+    let mut fenwick = AdditiveFenwickTree::new(n);
 
     for (i, a) in r#as.into_iter().enumerate() {
-        bit.plus(i, &a);
+        fenwick.plus(i, &a);
     }
 
     output::buf_print(|out| {
@@ -25,11 +25,11 @@ fn main() {
             match kind {
                 0 => {
                     input!(p: usize, x: i64);
-                    bit.plus(p, &x);
+                    fenwick.plus(p, &x);
                 }
                 1 => {
                     input!(l: usize, r: usize);
-                    println!("{}", bit.query(l..r));
+                    println!("{}", fenwick.query(l..r));
                 }
                 _ => unreachable!(),
             }

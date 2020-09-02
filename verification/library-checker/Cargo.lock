@@ -2,9 +2,9 @@
 # It is not intended for manual editing.
 [[package]]
 name = "cargo_equip_marker"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "350b5614a2e2782652bc3df5b0b5bde43b8e10c24c63f3da74deeddf16454010"
+checksum = "255620dea3615d00a16ba1b96ec6b4832f5113ee5c3f10618d652257cbab2081"
 
 [[package]]
 name = "lib"
