@@ -1,7 +1,5 @@
 // verify-helper: PROBLEM https://judge.yosupo.jp/problem/point_add_range_sum
 
-// CIをキャンセルしたら "# Code"のところが更新されなくなったのでこのコメントを追加
-
 #[cfg_attr(cargo_equip, cargo_equip::equip)]
 use ::__lib::{fenwick::AdditiveFenwickTree, input, output};
 
