@@ -8,4 +8,3 @@ publish = false
 
 [dependencies]
 __lib = { package = "lib", path = "../../lib" }
-cargo_equip_marker = "0.1.1"
