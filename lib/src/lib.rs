@@ -1,3 +1,5 @@
+// verify-helper: @ignore
+
 pub mod algebraic;
 pub mod fenwick;
 pub mod input;
