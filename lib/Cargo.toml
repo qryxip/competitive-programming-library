@@ -12,5 +12,6 @@ publish = false
 "fenwick" = ["algebraic"]
 "input" = []
 "output" = []
+"partition_point" = []
 
 [dependencies]

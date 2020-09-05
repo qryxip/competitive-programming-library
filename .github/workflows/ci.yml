@@ -19,19 +19,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup `1.41.0-x86_64-unknown-linux-gnu`
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.41.0-x86_64-unknown-linux-gnu
-          default: true
-          profile: minimal
-          components: rustfmt,clippy
-
       - name: Setup `stable-x86_64-unknown-linux-gnu`
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable-x86_64-unknown-linux-gnu
           default: true
+          profile: minimal
+          components: rustfmt,clippy
+
+      - name: Setup `1.41.0-x86_64-unknown-linux-gnu`
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.41.0-x86_64-unknown-linux-gnu
+          default: false
+          profile: minimal
+          components: rustfmt,clippy
+
+      - name: Setup `1.44.1-x86_64-unknown-linux-gnu`
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.44.1-x86_64-unknown-linux-gnu
+          default: false
           profile: minimal
           components: rustfmt,clippy
 
@@ -49,6 +57,13 @@ jobs:
           args: --manifest-path ./verification/library-checker/Cargo.toml -- --check
           toolchain: 1.41.0
 
+      - name: cargo-fmt (`verification/yukicoder`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path ./verification/yukicoder/Cargo.toml -- --check
+          toolchain: 1.44.1
+
       - name: cargo-clippy (`lib`)
         uses: actions-rs/cargo@v1
         with:
@@ -63,6 +78,13 @@ jobs:
           args: --manifest-path ./verification/library-checker/Cargo.toml -- -D warnings
           toolchain: 1.41.0
 
+      - name: cargo-clippy (`verification/yukicoder`)
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path ./verification/yukicoder/Cargo.toml -- -D warnings
+          toolchain: 1.44.1
+
   verify:
     name: Verify
     runs-on: ubuntu-18.04
@@ -71,19 +93,27 @@ jobs:
       - name: Checkout (v1)
         uses: actions/checkout@v1
 
-      - name: Setup Rust (1.41.0)
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.41.0-x86_64-unknown-linux-gnu
-          default: true
-          profile: minimal
-          components: rustfmt
-
       - name: Setup Rust (stable)
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable-x86_64-unknown-linux-gnu
           default: true
+          profile: minimal
+          components: rustfmt
+
+      - name: Setup Rust (1.41.0)
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.41.0-x86_64-unknown-linux-gnu
+          default: false
+          profile: minimal
+          components: rustfmt
+
+      - name: Setup Rust (1.44.1)
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.44.1-x86_64-unknown-linux-gnu
+          default: false
           profile: minimal
           components: rustfmt
 
