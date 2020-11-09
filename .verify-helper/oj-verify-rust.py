@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
+import itertools
 import json
 import subprocess
+import sys
 from argparse import ArgumentParser
 from pathlib import Path
 from queue import Queue
-import itertools
 from subprocess import PIPE
 from typing import Optional, Dict, Any, List, Tuple
-import sys
 
 
 def main() -> None:
