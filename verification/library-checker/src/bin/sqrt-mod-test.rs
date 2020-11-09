@@ -1,3 +1,5 @@
+// verify-helper: PROBLEM https://judge.yosupo.jp/problem/sqrt_mod
+
 #[macro_use]
 extern crate input as _;
 

@@ -1,9 +1,8 @@
 [languages.rs]
-verification_file_suffix = '_test.rs'
-compile = './.verify-helper/compile.bash {path}'
-execute = './.verify-helper/execute.bash {path}'
-list_dependencies = './.verify-helper/list-dependencies.bash {path}'
-bundle = './.verify-helper/bundle.bash {path}'
+verification_file_suffix = '-test.rs'
+compile = './.verify-helper/oj-verify-rust.py compile {path}'
+execute = './.verify-helper/oj-verify-rust.py execute {path}'
+list_dependencies = './.verify-helper/oj-verify-rust.py list-dependencies {path}'
 
 #list_attributes = ''
 # Rustっぽい記法だとこんな感じだが...
