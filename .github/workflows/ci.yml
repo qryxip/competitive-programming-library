@@ -47,7 +47,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --manifest-path ./crates/Cargo.toml -- --check
+          args: --all --manifest-path ./crates/Cargo.toml -- --check
           toolchain: stable
 
       - name: cargo-fmt (`verification/library-checker`)
