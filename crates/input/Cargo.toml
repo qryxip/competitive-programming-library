@@ -1,10 +1,8 @@
 [package]
-name = "library-checker"
+name = "input"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
-license = "MIT OR Apache-2.0"
 publish = false
 
 [dependencies]
-__lib = { package = "lib", path = "../../lib" }

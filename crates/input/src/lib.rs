@@ -12,10 +12,10 @@ macro_rules! input {
         $crate::input_inner!(@scanner($scanner), @tts($($tt)*))
     };
     ($($tt:tt)*) => {
-        let __scanner = $crate::input::DEFAULT_SCANNER.with(|__scanner| __scanner.clone());
+        let __scanner = $crate::DEFAULT_SCANNER.with(|__scanner| __scanner.clone());
         let mut __scanner_ref = __scanner.borrow_mut();
-        if let $crate::input::Scanner::Uninited = *__scanner_ref {
-            *__scanner_ref = $crate::input::Scanner::stdin_auto().unwrap();
+        if let $crate::Scanner::Uninited = *__scanner_ref {
+            *__scanner_ref = $crate::Scanner::stdin_auto().unwrap();
         }
         $crate::input_inner!(@scanner(__scanner_ref), @tts($($tt)*));
         ::std::mem::drop(__scanner_ref);
@@ -54,7 +54,7 @@ macro_rules! read {
         ($($crate::read!(from $scanner { $tt })),*)
     };
     (from $scanner:ident { $ty:ty }) => {
-        <$ty as $crate::input::Readable>::read_from_scanner(&mut $scanner)
+        <$ty as $crate::Readable>::read_from_scanner(&mut $scanner)
     };
 }
 
@@ -69,10 +69,10 @@ macro_rules! readable {
     ($name:ident; |$scanner:ident| -> $output:ty { $($body:tt)* }) => {
         enum $name {}
 
-        impl $crate::input::Readable for $name {
+        impl $crate::Readable for $name {
             type Output = $output;
 
-            fn read_from_scanner(mut $scanner: &mut $crate::input::Scanner) -> $output {
+            fn read_from_scanner(mut $scanner: &mut $crate::Scanner) -> $output {
                 $($body)*
             }
         }

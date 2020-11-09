@@ -1,7 +1,9 @@
 // verify-helper: PROBLEM https://yukicoder.me/problems/no/723
 
-#[cfg_attr(cargo_equip, cargo_equip::equip)]
-use ::__lib::{input, partition_point::RangeBoundsExt as _};
+#[macro_use]
+extern crate input as _;
+
+use partition_point::RangeBoundsExt as _;
 
 fn main() {
     input! {
