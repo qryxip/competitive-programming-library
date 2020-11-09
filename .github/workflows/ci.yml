@@ -27,10 +27,10 @@ jobs:
           profile: minimal
           components: rustfmt,clippy
 
-      - name: Setup `1.41.0-x86_64-unknown-linux-gnu`
+      - name: Setup `1.43.0-x86_64-unknown-linux-gnu`
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: 1.41.0-x86_64-unknown-linux-gnu
+          toolchain: 1.43.0-x86_64-unknown-linux-gnu
           default: false
           profile: minimal
           components: rustfmt,clippy
@@ -43,11 +43,11 @@ jobs:
           profile: minimal
           components: rustfmt,clippy
 
-      - name: cargo-fmt (`lib`)
+      - name: cargo-fmt (`crates`)
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --manifest-path ./lib/Cargo.toml -- --check
+          args: --manifest-path ./crates/Cargo.toml -- --check
           toolchain: stable
 
       - name: cargo-fmt (`verification/library-checker`)
@@ -55,7 +55,7 @@ jobs:
         with:
           command: fmt
           args: --manifest-path ./verification/library-checker/Cargo.toml -- --check
-          toolchain: 1.41.0
+          toolchain: 1.43.0
 
       - name: cargo-fmt (`verification/yukicoder`)
         uses: actions-rs/cargo@v1
@@ -64,11 +64,11 @@ jobs:
           args: --manifest-path ./verification/yukicoder/Cargo.toml -- --check
           toolchain: 1.44.1
 
-      - name: cargo-clippy (`lib`)
+      - name: cargo-clippy (`crates`)
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          args: --manifest-path ./lib/Cargo.toml -- -D warnings
+          args: --manifest-path ./crates/Cargo.toml -- -D warnings
           toolchain: stable
 
       - name: cargo-clippy (`verification/library-checker`)
@@ -76,7 +76,7 @@ jobs:
         with:
           command: clippy
           args: --manifest-path ./verification/library-checker/Cargo.toml -- -D warnings
-          toolchain: 1.41.0
+          toolchain: 1.43.0
 
       - name: cargo-clippy (`verification/yukicoder`)
         uses: actions-rs/cargo@v1
@@ -101,10 +101,10 @@ jobs:
           profile: minimal
           components: rustfmt
 
-      - name: Setup Rust (1.41.0)
+      - name: Setup Rust (1.43.0)
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: 1.41.0-x86_64-unknown-linux-gnu
+          toolchain: 1.43.0-x86_64-unknown-linux-gnu
           default: false
           profile: minimal
           components: rustfmt
@@ -116,13 +116,6 @@ jobs:
           default: false
           profile: minimal
           components: rustfmt
-
-      - name: Install cargo-equip
-        run: |
-          VERSION=0.3.0
-          wget "https://github.com/qryxip/cargo-equip/releases/download/v$VERSION/cargo-equip-v$VERSION-x86_64-unknown-linux-gnu.tar.gz"
-          tar xzvf "./cargo-equip-v$VERSION-x86_64-unknown-linux-gnu.tar.gz" -C /tmp/
-          echo "::add-path::/tmp/cargo-equip-v$VERSION-x86_64-unknown-linux-gnu"
 
       - name: Setup Python
         uses: actions/setup-python@v1
