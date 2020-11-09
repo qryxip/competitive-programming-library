@@ -1,2 +1,2 @@
 [workspace]
-members = ["input/", "output/", "partition_point/"]
+members = ["input/", "output/", "partition_point/", "tonelli_shanks/", "xorshift/"]

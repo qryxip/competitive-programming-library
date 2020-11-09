@@ -1,0 +1,8 @@
+[package]
+name = "xorshift"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+publish = false
+
+[dependencies]

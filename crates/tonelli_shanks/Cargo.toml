@@ -1,0 +1,10 @@
+[package]
+name = "tonelli_shanks"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+publish = false
+
+[dependencies]
+__xorshift = { package = "xorshift", version = "0.0.0", path = "../xorshift" }
+__acl_modint = { package = "ac-library-rs-parted-modint", git = "https://github.com/qryxip/ac-library-rs-parted" }
