@@ -1,0 +1,15 @@
+[package]
+name = "library-checker"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dependencies]
+ac-library-rs-parted-modint = { git = "https://github.com/qryxip/ac-library-rs-parted" }
+input = { path = "../../crates/input" }
+output = { path = "../../crates/output" }
+partition_point = { path = "../../crates/partition_point" }
+tonelli_shanks = { path = "../../crates/tonelli_shanks" }
+xorshift = { path = "../../crates/xorshift" }
