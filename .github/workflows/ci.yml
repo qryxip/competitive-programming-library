@@ -120,7 +120,7 @@ jobs:
           VERSION=0.1.15
           wget "https://github.com/est31/cargo-udeps/releases/download/v$VERSION/cargo-udeps-v$VERSION-x86_64-unknown-linux-gnu.tar.gz"
           tar xzvf "./cargo-udeps-v$VERSION-x86_64-unknown-linux-gnu.tar.gz" -C /tmp/
-          echo "/tmp/cargo-equip-v$VERSION-x86_64-unknown-linux-gnu" >> $GITHUB_PATH
+          echo "/tmp/cargo-udeps-v$VERSION-x86_64-unknown-linux-gnu" >> $GITHUB_PATH
 
       - name: Setup Python
         uses: actions/setup-python@v1
