@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import json
 import subprocess
 import sys
@@ -71,22 +72,62 @@ def language_list_dependencies(path: Path) -> List[Path]:
                 file=sys.stderr, flush=True,
             )
             return []
+
     metadata = cargo_metadata(cwd=path.parent)
     target = find_target(metadata, path)
+
     if not target:
         return [other for other in path.parent.rglob('*.rs') if other != path]
     package, target = target
+
     packages_by_id = {package['id']: package
                       for package in metadata['packages']}
-    return sorted(
-        Path(target['src_path'])
+    normal_build_node_deps = {
+        normal_build_node_dep['name']: normal_build_node_dep
         for node in metadata['resolve']['nodes']
         if node['id'] == package['id']
-        for dep in node['deps']
-        if not packages_by_id[dep['pkg']]['source'] and
-        any(not dep_kind['kind'] or dep_kind['kind'] == 'build'
-            for dep_kind in dep['dep_kinds'])
-        for target in packages_by_id[dep['pkg']]['targets']
+        for normal_build_node_dep in node['deps']
+        if not packages_by_id[normal_build_node_dep['pkg']]['source'] and any(
+            not dep_kind['kind'] or dep_kind['kind'] == 'build'
+            for dep_kind in normal_build_node_dep['dep_kinds']
+        )
+    }
+
+    if target['kind'] == ['bin']:
+        renames = {dependency['rename']
+                   for dependency in package['dependencies']
+                   if dependency['rename']}
+        unused_packages = {
+            package_id
+            for unused_dep in json.loads(subprocess.run(
+                ['rustup', 'run', 'nightly', 'cargo', 'udeps', '--output',
+                 'json', '--manifest-path', package['manifest_path'], '--bin',
+                 target['name']],
+                check=False, stdout=PIPE,
+            ).stdout.decode())['unused_deps'].values()
+            if unused_dep['manifest_path'] == package['manifest_path']
+            for name_in_toml in itertools.chain(
+                unused_dep['normal'], unused_dep['build'])
+            for package_id in (
+                [normal_build_node_deps[name_in_toml]]
+                if name_in_toml in renames else
+                [
+                    normal_build_node_dep['pkg']
+                    for normal_build_node_dep
+                    in normal_build_node_deps.values()
+                    if packages_by_id[normal_build_node_dep['pkg']][
+                           'name'] == name_in_toml
+                ][:1]
+            )
+        }
+    else:
+        unused_packages = set()
+
+    return sorted(
+        Path(target['src_path'])
+        for normal_build_node_dep in normal_build_node_deps.values()
+        if normal_build_node_dep['pkg'] not in unused_packages
+        for target in packages_by_id[normal_build_node_dep['pkg']]['targets']
         if target['kind'] == ['lib'] and Path(target['src_path']) != path
     )
 

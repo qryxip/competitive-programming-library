@@ -101,6 +101,13 @@ jobs:
           profile: minimal
           components: rustfmt
 
+      - name: Setup Rust (nightly)
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly-x86_64-unknown-linux-gnu
+          default: false
+          profile: minimal
+
       - name: Setup Rust (1.43.0)
         uses: actions-rs/toolchain@v1
         with:
@@ -116,6 +123,13 @@ jobs:
           default: false
           profile: minimal
           components: rustfmt
+
+      - name: Install cargo-udeps
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: --git https://github.com/est31/cargo-udeps --rev 08c00eda839d284c6f283900c1b133fcce67114c --locked
+          toolchain: stable
 
       - name: Setup Python
         uses: actions/setup-python@v1
