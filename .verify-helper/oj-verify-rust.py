@@ -38,7 +38,7 @@ def main() -> None:
 
 
 def language_compile(path: Path) -> None:
-    metadata = cargo_metadata(path.parent, True)
+    metadata = cargo_metadata(cwd=path.parent, no_deps=True)
     target = find_target(metadata, path)
     if not target:
         raise Exception(f'{path} is not a main source file of any target')
@@ -52,7 +52,7 @@ def language_compile(path: Path) -> None:
 
 
 def language_get_executable_command(path: Path) -> List[str]:
-    metadata = cargo_metadata(path.parent, True)
+    metadata = cargo_metadata(cwd=path.parent, no_deps=True)
     target = find_target(metadata, path)
     if not target:
         raise Exception(f'{path} is not a main source file of any target')
@@ -71,11 +71,10 @@ def language_list_dependencies(path: Path) -> List[Path]:
                 file=sys.stderr, flush=True,
             )
             return []
-    ret = [other for other in path.parent.rglob('*.rs') if other != path]
-    metadata = cargo_metadata(path.parent, False)
+    metadata = cargo_metadata(cwd=path.parent)
     target = find_target(metadata, path)
     if not target:
-        return ret
+        return [other for other in path.parent.rglob('*.rs') if other != path]
     package, target = target
     packages_by_id = {package['id']: package
                       for package in metadata['packages']}
@@ -92,7 +91,7 @@ def language_list_dependencies(path: Path) -> List[Path]:
     )
 
 
-def cargo_metadata(cwd: Path, no_deps: bool) -> Dict[str, Any]:
+def cargo_metadata(cwd: Path, no_deps: bool = False) -> Dict[str, Any]:
     args = ['cargo', 'metadata', '--format-version', '1']
     if no_deps:
         args.append('--no-deps')
