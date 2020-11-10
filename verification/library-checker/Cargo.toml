@@ -11,4 +11,3 @@ ac-library-rs-parted-modint = { git = "https://github.com/qryxip/ac-library-rs-p
 input = { path = "../../crates/input" }
 output = { path = "../../crates/output" }
 tonelli_shanks = { path = "../../crates/tonelli_shanks" }
-xorshift = { path = "../../crates/xorshift" }

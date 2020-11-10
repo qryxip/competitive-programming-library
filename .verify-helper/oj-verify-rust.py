@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 
-import itertools
 import json
 import subprocess
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
-from queue import Queue
 from subprocess import PIPE
-from typing import Optional, Dict, Any, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 def main() -> None:
@@ -75,32 +73,19 @@ def language_list_dependencies(path: Path) -> List[Path]:
     if not target:
         return ret
     package, target = target
-    graph = {
-        node['id']: [
-            dep['pkg'] for dep in node['deps']
-            if any(not dep_kind['kind'] or dep_kind['kind'] == 'build'
-                   for dep_kind in dep['dep_kinds'])
-        ]
+    packages_by_id = {package['id']: package
+                      for package in metadata['packages']}
+    return sorted(
+        Path(target['src_path'])
         for node in metadata['resolve']['nodes']
-    }
-    connected = {package['id']}
-    queue = Queue()
-    queue.put(package['id'])
-    while not queue.empty():
-        cur_package_id = queue.get()
-        for next_package_id in graph[cur_package_id]:
-            if next_package_id not in connected:
-                connected.add(next_package_id)
-                queue.put(next_package_id)
-    packages = {package['id']: package for package in metadata['packages']}
-    return sorted(itertools.chain.from_iterable(
-        Path(target['src_path']).parent.rglob('*.rs')
-        for package_id in connected
-        for target in packages[package_id]['targets']
-        if not packages[package_id]['source']
-        and target['kind'] == ['lib']
-        and Path(target['src_path']) != path
-    ))
+        if node['id'] == package['id']
+        for dep in node['deps']
+        if not packages_by_id[dep['pkg']]['source'] and
+        any(not dep_kind['kind'] or dep_kind['kind'] == 'build'
+            for dep_kind in dep['dep_kinds'])
+        for target in packages_by_id[dep['pkg']]['targets']
+        if target['kind'] == ['lib'] and Path(target['src_path']) != path
+    )
 
 
 def cargo_metadata(cwd: Path, no_deps: bool) -> Dict[str, Any]:
