@@ -93,13 +93,6 @@ jobs:
       - name: Checkout (v1)
         uses: actions/checkout@v1
 
-      - name: Setup Rust (stable)
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable-x86_64-unknown-linux-gnu
-          default: true
-          profile: minimal
-
       - name: Setup Rust (nightly)
         uses: actions-rs/toolchain@v1
         with:
@@ -123,11 +116,11 @@ jobs:
           profile: minimal
 
       - name: Install cargo-udeps
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: --git https://github.com/est31/cargo-udeps --rev 08c00eda839d284c6f283900c1b133fcce67114c --locked
-          toolchain: stable
+        run: |
+          VERSION=0.1.15
+          wget "https://github.com/est31/cargo-udeps/releases/download/v$VERSION/cargo-udeps-v$VERSION-x86_64-unknown-linux-gnu.tar.gz"
+          tar xzvf "./cargo-udeps-v$VERSION-x86_64-unknown-linux-gnu.tar.gz" -C /tmp/
+          echo "/tmp/cargo-equip-v$VERSION-x86_64-unknown-linux-gnu" >> $GITHUB_PATH
 
       - name: Setup Python
         uses: actions/setup-python@v1
