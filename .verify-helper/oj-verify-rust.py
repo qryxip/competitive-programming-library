@@ -63,10 +63,14 @@ def language_get_executable_command(path: Path) -> List[str]:
 
 
 def language_list_dependencies(path: Path) -> List[Path]:
-    if 'target' in path.parts:
-        print(f'Nope! This is a generated file, and is gitignored!: {path}',
-              file=sys.stderr, flush=True)
-        return []
+    for parent in path.parents:
+        if parent.parent.joinpath('Cargo.toml').exists() and \
+                parent.parts[-1] == 'target':
+            print(
+                f'Nope! This is a generated file, and is gitignored!: {path}',
+                file=sys.stderr, flush=True,
+            )
+            return []
     ret = [other for other in path.parent.rglob('*.rs') if other != path]
     metadata = cargo_metadata(path.parent, False)
     target = find_target(metadata, path)
