@@ -1,7 +1,9 @@
-extern crate __acl_modint as acl_modint;
-extern crate __xorshift as xorshift;
+mod extern_crates {
+    pub(super) extern crate __acl_modint as acl_modint;
+    pub(super) extern crate __xorshift as xorshift;
+}
 
-use self::{acl_modint::ModIntBase, xorshift::Xorshift64};
+use self::extern_crates::{acl_modint::ModIntBase, xorshift::Xorshift64};
 
 pub trait ModIntBaseExt: ModIntBase {
     fn sqrt(self) -> Option<Self> {
