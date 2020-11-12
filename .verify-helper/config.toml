@@ -1,15 +1,2 @@
-[languages.rs]
-verification_file_suffix = '-test.rs'
-compile = './.verify-helper/oj-verify-rust.py compile {path}'
-execute = './.verify-helper/oj-verify-rust.py execute {path}'
-list_dependencies = './.verify-helper/oj-verify-rust.py list-dependencies {path}'
-
-#list_attributes = ''
-# Rustっぽい記法だとこんな感じだが...
-# ```toml
-# #![cfg_attr(
-#     oj_verify,
-#     oj_verify::problem("https://judge.yosupo.jp/problem/point_add_range_sum"),
-#     oj_verify::error(1e-9)
-# )]
-# ```
+[languages.rust.list_dependencies_backend]
+kind = 'cargo-udeps'

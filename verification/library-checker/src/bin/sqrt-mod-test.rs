@@ -1,5 +1,8 @@
 // verify-helper: PROBLEM https://judge.yosupo.jp/problem/sqrt_mod
 
+// Uncomment this line if you don't use your libraries. (`--check` still works)
+//#![cfg_attr(cargo_equip, cargo_equip::skip)]
+
 #[macro_use]
 extern crate input as _;
 
