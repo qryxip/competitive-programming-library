@@ -1,0 +1,10 @@
+[package]
+name = "montmort_number"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+publish = false
+
+[dev-dependencies]
+pretty_assertions = "0.6.1"
