@@ -19,11 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup `stable-x86_64-unknown-linux-gnu`
+      - name: Setup `1.42.0-x86_64-unknown-linux-gnu`
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable-x86_64-unknown-linux-gnu
-          default: true
+          toolchain: 1.42.0-x86_64-unknown-linux-gnu
+          default: false
           profile: minimal
           components: rustfmt,clippy
 
@@ -48,7 +48,7 @@ jobs:
         with:
           command: fmt
           args: --all --manifest-path ./crates/Cargo.toml -- --check
-          toolchain: stable
+          toolchain: 1.42.0
 
       - name: cargo-fmt (`verification/library-checker`)
         uses: actions-rs/cargo@v1
@@ -69,7 +69,7 @@ jobs:
         with:
           command: clippy
           args: --manifest-path ./crates/Cargo.toml -- -D warnings
-          toolchain: stable
+          toolchain: 1.42.0
 
       - name: cargo-clippy (`verification/library-checker`)
         uses: actions-rs/cargo@v1
@@ -97,6 +97,14 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: nightly-x86_64-unknown-linux-gnu
+          default: false
+          profile: minimal
+          components: rustfmt
+
+      - name: Setup `1.42.0-x86_64-unknown-linux-gnu`
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.42.0-x86_64-unknown-linux-gnu
           default: false
           profile: minimal
           components: rustfmt
