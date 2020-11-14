@@ -1,2 +1,3 @@
 [workspace]
-members = ["input/", "output/", "partition_point/", "tonelli_shanks/", "xorshift/"]
+members = ["*/"]
+exclude = ["target/"]
