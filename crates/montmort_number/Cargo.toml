@@ -3,7 +3,7 @@ name = "montmort_number"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
-license = "MIT OR Apache-2.0"
+license = "CC0-1.0"
 publish = false
 
 [dev-dependencies]
