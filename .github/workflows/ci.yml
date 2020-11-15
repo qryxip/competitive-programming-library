@@ -25,11 +25,11 @@ jobs:
           profile: minimal
           components: rustfmt,clippy
 
-      - name: cargo-fmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+      #- name: cargo-fmt
+      #  uses: actions-rs/cargo@v1
+      #  with:
+      #    command: fmt
+      #    args: --all -- --check
 
       - name: cargo-clippy
         uses: actions-rs/cargo@v1
