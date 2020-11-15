@@ -1,4 +1,2 @@
 exclude:
-  - ./crates/target/
-  - ./verification/library-checker/target/
-  - ./verification/yukicoder/target/
+  - ./target/
