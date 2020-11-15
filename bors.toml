@@ -1,2 +1,0 @@
-status = ["Build", "Verify"]
-delete_merged_branches = true
