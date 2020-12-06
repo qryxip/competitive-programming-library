@@ -7,6 +7,5 @@ license = "CC0-1.0"
 publish = false
 
 [dependencies]
-input = { path = "../../crates/input" }
-output = { path = "../../crates/output" }
-partition_point = { path = "../../crates/partition_point" }
+qryxips-competitive-programming-library-input = { path = "../../crates/io/input" }
+qryxips-competitive-programming-library-partition-point = { path = "../../crates/partition_point" }

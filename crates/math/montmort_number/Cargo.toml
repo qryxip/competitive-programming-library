@@ -1,10 +1,13 @@
 [package]
-name = "montmort_number"
+name = "qryxips-competitive-programming-library-montmort-number"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
 license = "CC0-1.0"
 publish = false
+
+[lib]
+name = "montmort_number"
 
 [dev-dependencies]
 pretty_assertions = "0.6.1"

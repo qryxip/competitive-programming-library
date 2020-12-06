@@ -1,11 +1,14 @@
 [package]
-name = "tonelli_shanks"
+name = "qryxips-competitive-programming-library-tonelli-shanks"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
 license = "CC0-1.0"
 publish = false
 
+[lib]
+name = "tonelli_shanks"
+
 [dependencies]
-__xorshift = { package = "xorshift", version = "0.0.0", path = "../xorshift" }
+__xorshift = { package = "qryxips-competitive-programming-library-xorshift", version = "0.0.0", path = "../../xorshift" }
 __acl_modint = { package = "ac-library-rs-parted-modint", git = "https://github.com/qryxip/ac-library-rs-parted" }

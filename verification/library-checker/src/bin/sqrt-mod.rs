@@ -15,7 +15,7 @@ fn main() {
         yps: [(u32, u32)],
     }
 
-    output::buf_print(|out| {
+    buffered_print::buf_print(|out| {
         macro_rules! println(($($tt:tt)*) => (writeln!(out, $($tt)*).unwrap()));
         for (y, p) in yps {
             ModInt::set_modulus(p);

@@ -1,9 +1,10 @@
 [package]
-name = "input"
+name = "qryxips-competitive-programming-library-buffered-print"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
 license = "CC0-1.0"
 publish = false
 
-[dependencies]
+[lib]
+name = "buffered_print"
