@@ -23,13 +23,7 @@ fn rho(n: u64) -> u64 {
     }
 
     for cycle in 1.. {
-        let g = |x: u64| -> _ {
-            if let Some(r) = x.checked_mul(x).and_then(|x| x.checked_add(cycle)) {
-                r % n
-            } else {
-                ((u128::from(x) * u128::from(x) + u128::from(cycle)) % (u128::from(n))) as _
-            }
-        };
+        let g = |x: u64| add_mod(mul_mod(x, x, n), cycle, n);
         let sub = |lhs: u64, rhs: u64| -> _ {
             if lhs < rhs {
                 n + lhs - rhs
@@ -61,6 +55,22 @@ fn gcd(mut a: u64, mut b: u64) -> u64 {
         b = r;
     }
     a
+}
+
+fn add_mod(lhs: u64, rhs: u64, modulus: u64) -> u64 {
+    let mut ret = lhs + rhs;
+    if ret >= modulus {
+        ret -= modulus;
+    }
+    ret
+}
+
+fn mul_mod(lhs: u64, rhs: u64, modulus: u64) -> u64 {
+    if let Some(mul) = lhs.checked_mul(rhs) {
+        mul % modulus
+    } else {
+        (u128::from(lhs) * u128::from(rhs) % u128::from(modulus)) as _
+    }
 }
 
 #[cfg(test)]

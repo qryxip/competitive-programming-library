@@ -69,11 +69,11 @@ fn mod_pow(mut base: u64, mut exp: u64, modulus: u64) -> u64 {
 }
 
 fn mod_mul(lhs: u64, rhs: u64, modulus: u64) -> u64 {
-    (if let Some(mul) = lhs.checked_mul(rhs) {
-        mul
+    if let Some(mul) = lhs.checked_mul(rhs) {
+        mul % modulus
     } else {
-        (u128::from(lhs) * u128::from(rhs)) as _
-    }) % modulus
+        (u128::from(lhs) * u128::from(rhs) % u128::from(modulus)) as _
+    }
 }
 
 #[cfg(test)]
