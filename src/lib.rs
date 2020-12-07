@@ -13,5 +13,5 @@ pub mod io {
 }
 
 pub mod math {
-    re_export!(miller_rabin, montmort_number, rho, tonelli_shanks);
+    re_export!(gcd, miller_rabin, montmort_number, rho, tonelli_shanks);
 }

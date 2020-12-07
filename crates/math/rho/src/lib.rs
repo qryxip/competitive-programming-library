@@ -22,8 +22,15 @@ fn rho(n: u64) -> u64 {
         return 2;
     }
 
-    for cycle in 1.. {
-        let g = |x: u64| add_mod(mul_mod(x, x, n), cycle, n);
+    for c in 1.. {
+        let add = |lhs: u64, rhs: u64| -> _ {
+            let mut ret = lhs + rhs;
+            if ret >= n {
+                ret -= n;
+            }
+            ret
+        };
+
         let sub = |lhs: u64, rhs: u64| -> _ {
             if lhs < rhs {
                 n + lhs - rhs
@@ -31,12 +38,23 @@ fn rho(n: u64) -> u64 {
                 lhs - rhs
             }
         };
+
+        let mul = |lhs: u64, rhs: u64| -> _ {
+            if let Some(mul) = lhs.checked_mul(rhs) {
+                mul % n
+            } else {
+                (u128::from(lhs) * u128::from(rhs) % u128::from(n)) as _
+            }
+        };
+
+        let g = |x: u64| add(mul(x, x), c);
+
         let mut x = 2;
         let mut y = 2;
         let d = loop {
             x = g(x);
             y = g(g(y));
-            let d = gcd(sub(x, y), n);
+            let d = gcd::gcd(sub(x, y), n);
             if d > 1 {
                 break d;
             }
@@ -46,31 +64,6 @@ fn rho(n: u64) -> u64 {
         }
     }
     unreachable!();
-}
-
-fn gcd(mut a: u64, mut b: u64) -> u64 {
-    while b > 0 {
-        let r = a % b;
-        a = b;
-        b = r;
-    }
-    a
-}
-
-fn add_mod(lhs: u64, rhs: u64, modulus: u64) -> u64 {
-    let mut ret = lhs + rhs;
-    if ret >= modulus {
-        ret -= modulus;
-    }
-    ret
-}
-
-fn mul_mod(lhs: u64, rhs: u64, modulus: u64) -> u64 {
-    if let Some(mul) = lhs.checked_mul(rhs) {
-        mul % modulus
-    } else {
-        (u128::from(lhs) * u128::from(rhs) % u128::from(modulus)) as _
-    }
 }
 
 #[cfg(test)]
