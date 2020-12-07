@@ -13,9 +13,11 @@ publish = false
 name = "_" # This crate is not intended to be used directly.
 
 [dependencies]
-qryxips-competitive-programming-library-input = { version = "0.0.0", path = "./crates/io/input" }
-qryxips-competitive-programming-library-montmort-number = { version = "0.0.0", path = "./crates/math/montmort_number" }
 qryxips-competitive-programming-library-buffered-print = { version = "0.0.0", path = "./crates/io/buffered_print" }
+qryxips-competitive-programming-library-input = { version = "0.0.0", path = "./crates/io/input" }
+qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "./crates/math/miller_rabin" }
+qryxips-competitive-programming-library-montmort-number = { version = "0.0.0", path = "./crates/math/montmort_number" }
 qryxips-competitive-programming-library-partition-point = { version = "0.0.0", path = "./crates/partition_point" }
+qryxips-competitive-programming-library-rho = { version = "0.0.0", path = "./crates/math/rho" }
 qryxips-competitive-programming-library-tonelli-shanks = { version = "0.0.0", path = "./crates/math/tonelli_shanks" }
 qryxips-competitive-programming-library-xorshift = { version = "0.0.0", path = "./crates/xorshift" }

@@ -1,6 +1,6 @@
-//! My libraries for competitive programming.
+//! Crates for competitive programming.
 //!
-//! You cannot use this crate directly.
+//! This crate is not intended to be used directly.
 
 // TODO: expand crate-level docs with `custom-build` and `syn` crate.
 
@@ -13,5 +13,5 @@ pub mod io {
 }
 
 pub mod math {
-    re_export!(montmort_number, tonelli_shanks);
+    re_export!(miller_rabin, montmort_number, rho, tonelli_shanks);
 }
