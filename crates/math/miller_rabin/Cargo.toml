@@ -8,6 +8,3 @@ publish = false
 
 [lib]
 name = "miller_rabin"
-
-[dependencies]
-__acl_modint = { package = "ac-library-rs-parted-modint", git = "https://github.com/qryxip/ac-library-rs-parted" }
