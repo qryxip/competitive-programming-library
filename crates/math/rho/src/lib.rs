@@ -18,7 +18,7 @@ pub fn factorize(n: u64) -> Vec<u64> {
 
 #[allow(clippy::many_single_char_names)]
 fn rho(n: u64) -> u64 {
-    let g = |x: u64| (x * x - 1) % n;
+    let g = |x: u64| (x * x + 1) % n;
 
     let mut x = 2;
     let mut y = 2;
