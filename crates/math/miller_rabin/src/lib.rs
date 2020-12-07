@@ -42,11 +42,10 @@ pub fn miller_rabin(n: u64) -> bool {
             continue 'witness_loop;
         }
         for _ in 0..r - 1 {
-            let y = mod_pow(x, x, n);
-            if y == 1 {
+            x = mod_mul(x, x, n);
+            if x == 1 {
                 return false;
             }
-            x = y;
             if x == n - 1 {
                 continue 'witness_loop;
             }
@@ -75,4 +74,18 @@ fn mod_mul(lhs: u64, rhs: u64, modulus: u64) -> u64 {
     } else {
         (u128::from(lhs) * u128::from(rhs)) as _
     }) % modulus
+}
+
+#[cfg(test)]
+mod tests {
+    use primal_sieve::Sieve;
+
+    #[test]
+    fn test() {
+        const LIMIT: usize = 1_000_000;
+        let sieve = Sieve::new(LIMIT);
+        for x in 0..LIMIT {
+            assert_eq!(sieve.is_prime(x), super::miller_rabin(x as _));
+        }
+    }
 }

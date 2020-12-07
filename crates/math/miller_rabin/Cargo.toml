@@ -8,3 +8,6 @@ publish = false
 
 [lib]
 name = "miller_rabin"
+
+[dev-dependencies]
+primal-sieve = "0.3.1"
