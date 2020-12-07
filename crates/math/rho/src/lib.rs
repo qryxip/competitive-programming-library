@@ -23,7 +23,13 @@ fn rho(n: u64) -> u64 {
     }
 
     for cycle in 1.. {
-        let g = |x: u64| (x * x + cycle) % n;
+        let g = |x: u64| -> _ {
+            if let Some(r) = x.checked_mul(x).and_then(|x| x.checked_add(cycle)) {
+                r % n
+            } else {
+                ((u128::from(x) * u128::from(x) + u128::from(cycle)) % (u128::from(n))) as _
+            }
+        };
         let sub = |lhs: u64, rhs: u64| -> _ {
             if lhs < rhs {
                 n + lhs - rhs
