@@ -8,4 +8,4 @@ publish = false
 
 [dependencies]
 qryxips-competitive-programming-library-input = { path = "../../crates/io/input" }
-qryxips-competitive-programming-library-partition-point = { path = "../../crates/partition_point" }
+qryxips-competitive-programming-library-partition-point = { path = "../../crates/integer/partition_point" }

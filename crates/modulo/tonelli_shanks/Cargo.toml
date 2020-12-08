@@ -11,5 +11,5 @@ publish = false
 name = "tonelli_shanks"
 
 [dependencies]
-__xorshift = { package = "qryxips-competitive-programming-library-xorshift", version = "0.0.0", path = "../../xorshift" }
+__xorshift = { package = "qryxips-competitive-programming-library-xorshift", version = "0.0.0", path = "../../integer/xorshift" }
 __acl_modint = { package = "ac-library-rs-parted-modint", git = "https://github.com/qryxip/ac-library-rs-parted" }

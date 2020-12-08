@@ -11,5 +11,5 @@ publish = false
 name = "rho"
 
 [dependencies]
-qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "../gcd" }
+qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "../../integer/gcd" }
 qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "../miller_rabin" }
