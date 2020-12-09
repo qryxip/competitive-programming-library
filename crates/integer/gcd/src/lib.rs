@@ -1,3 +1,12 @@
+//! Calculates a Greatest Common Divisor (GCD).
+//!
+//! ```
+//! assert_eq!(2, gcd::gcd(10, 2));
+//! assert_eq!(1, gcd::gcd(10, 3));
+//! assert_eq!(14, gcd::gcd(56, 42));
+//! ```
+
+/// Calculates a Greatest Common Divisor (GCD).
 pub fn gcd(a: u64, b: u64) -> u64 {
     if a == b {
         return a;
@@ -20,14 +29,4 @@ pub fn gcd(a: u64, b: u64) -> u64 {
         }
     }
     a << common_zeros
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test() {
-        assert_eq!(2, super::gcd(10, 2));
-        assert_eq!(1, super::gcd(10, 3));
-        assert_eq!(14, super::gcd(56, 42));
-    }
 }
