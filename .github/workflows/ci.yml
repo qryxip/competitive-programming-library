@@ -53,10 +53,11 @@ jobs:
           profile: minimal
           components: rustfmt,clippy
 
-      - name: cargo xtask docs
+      - name: cargo-xtask-docs
         uses: actions-rs/cargo@v1
         with:
-          command: docs
+          command: xtask
+          args: docs
 
       - name: Docs up-to-date
         run: git diff
