@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-montmort-number"
+name = "qryxips-competitive-programming-library-xorshift"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -8,7 +8,5 @@ repository = "https://github.com/qryxip/oj-verify-playground"
 publish = false
 
 [lib]
-name = "montmort_number"
-
-[dev-dependencies]
-pretty_assertions = "0.6.1"
+name = "xorshift"
+path = "../../sourcefiles/xorshift.rs"

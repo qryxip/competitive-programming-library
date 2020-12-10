@@ -7,5 +7,5 @@ license = "CC0-1.0"
 publish = false
 
 [dependencies]
-qryxips-competitive-programming-library-input = { path = "../../crates/io/input" }
-qryxips-competitive-programming-library-partition-point = { path = "../../crates/integer/partition_point" }
+qryxips-competitive-programming-library-input = { path = "../../crates/io/manifests/input" }
+qryxips-competitive-programming-library-partition-point = { path = "../../crates/integer/manifests/partition_point" }

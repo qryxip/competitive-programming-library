@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-partition-point"
+name = "qryxips-competitive-programming-library-montmort-number"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -8,4 +8,8 @@ repository = "https://github.com/qryxip/oj-verify-playground"
 publish = false
 
 [lib]
-name = "partition_point"
+name = "montmort_number"
+path = "../../sourcefiles/montmort_number.rs"
+
+[dev-dependencies]
+pretty_assertions = "0.6.1"

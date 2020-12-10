@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-xorshift"
+name = "qryxips-competitive-programming-library-partition-point"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -8,4 +8,5 @@ repository = "https://github.com/qryxip/oj-verify-playground"
 publish = false
 
 [lib]
-name = "xorshift"
+name = "partition_point"
+path = "../../sourcefiles/partition_point.rs"

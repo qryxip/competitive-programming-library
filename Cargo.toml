@@ -14,12 +14,12 @@ publish = false
 name = "_" # This crate is not intended to be used directly.
 
 [dependencies]
-qryxips-competitive-programming-library-buffered-print = { version = "0.0.0", path = "./crates/io/buffered_print" }
-qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "./crates/integer/gcd" }
-qryxips-competitive-programming-library-input = { version = "0.0.0", path = "./crates/io/input" }
-qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "./crates/prime/miller_rabin" }
-qryxips-competitive-programming-library-montmort-number = { version = "0.0.0", path = "./crates/integer/montmort_number" }
-qryxips-competitive-programming-library-partition-point = { version = "0.0.0", path = "./crates/integer/partition_point" }
-qryxips-competitive-programming-library-rho = { version = "0.0.0", path = "./crates/prime/rho" }
-qryxips-competitive-programming-library-tonelli-shanks = { version = "0.0.0", path = "./crates/modulo/tonelli_shanks" }
-qryxips-competitive-programming-library-xorshift = { version = "0.0.0", path = "./crates/integer/xorshift" }
+qryxips-competitive-programming-library-buffered-print = { version = "0.0.0", path = "./crates/io/manifests/buffered_print" }
+qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "./crates/integer/manifests/gcd" }
+qryxips-competitive-programming-library-input = { version = "0.0.0", path = "./crates/io/manifests/input" }
+qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "./crates/prime/manifests/miller_rabin" }
+qryxips-competitive-programming-library-montmort-number = { version = "0.0.0", path = "./crates/integer/manifests/montmort_number" }
+qryxips-competitive-programming-library-partition-point = { version = "0.0.0", path = "./crates/integer/manifests/partition_point" }
+qryxips-competitive-programming-library-rho = { version = "0.0.0", path = "./crates/prime/manifests/rho" }
+qryxips-competitive-programming-library-tonelli-shanks = { version = "0.0.0", path = "./crates/modulo/manifests/tonelli_shanks" }
+qryxips-competitive-programming-library-xorshift = { version = "0.0.0", path = "./crates/integer/manifests/xorshift" }

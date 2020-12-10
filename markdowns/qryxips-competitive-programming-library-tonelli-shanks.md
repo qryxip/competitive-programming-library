@@ -1,5 +1,5 @@
 ---
 title: "qryxips-competitive-programming-library-tonelli-shanks (<code>tonelli_shanks</code>)"
-documentation_of: //crates/modulo/tonelli_shanks/src/lib.rs
+documentation_of: //crates/modulo/manifests/tonelli_shanks/../../sourcefiles/tonelli_shanks.rs
 ---
 

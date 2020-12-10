@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-miller-rabin"
+name = "qryxips-competitive-programming-library-gcd"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -8,7 +8,5 @@ repository = "https://github.com/qryxip/oj-verify-playground"
 publish = false
 
 [lib]
-name = "miller_rabin"
-
-[dev-dependencies]
-primal-sieve = "0.3.1"
+name = "gcd"
+path = "../../sourcefiles/gcd.rs"

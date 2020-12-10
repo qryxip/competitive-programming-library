@@ -9,3 +9,4 @@ publish = false
 
 [lib]
 name = "buffered_print"
+path = "../../sourcefiles/buffered_print.rs"

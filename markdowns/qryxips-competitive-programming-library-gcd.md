@@ -1,6 +1,6 @@
 ---
 title: "qryxips-competitive-programming-library-gcd (<code>gcd</code>)"
-documentation_of: //crates/integer/gcd/src/lib.rs
+documentation_of: //crates/integer/manifests/gcd/../../sourcefiles/gcd.rs
 ---
 Calculates a Greatest Common Divisor (GCD).
 

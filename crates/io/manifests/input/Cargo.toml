@@ -9,3 +9,4 @@ publish = false
 
 [lib]
 name = "input"
+path = "../../sourcefiles/input.rs"
