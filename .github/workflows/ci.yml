@@ -42,8 +42,14 @@ jobs:
           command: clippy
           args: --workspace --all-targets --all-features -- -D warnings
 
+      - name: cargo-clippy (xtask)
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: --manifest-path ./xtask/Cargo.toml -- -D warnings
+
       - name: cargo-clippy (proc-macro/*)
-        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo clippy --all-targets --manifest-path
+        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo clippy --all-targets --manifest-path -- -D warnings
 
   docs-by-xtask-up-to-date:
     name: Docs by xtask up-to-date
