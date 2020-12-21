@@ -89,7 +89,7 @@ fn doc(manifest_path: Option<&Path>) -> anyhow::Result<()> {
         .with_file_name("rustfmt")
         .with_extension(env::consts::EXE_EXTENSION);
         let tempdir = tempfile::Builder::new()
-            .prefix("oj-verify-playground-xtask-")
+            .prefix("qryxip-competitive-programming-library-xtask-")
             .tempdir()?;
         let path = tempdir.path().join("generated.rs");
         fs::write(&path, generated)?;

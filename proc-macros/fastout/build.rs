@@ -7,7 +7,7 @@ fn main() {
             source: Source::Path {
                 path: "./impl",
                 or: Some(Box::new(Source::Git {
-                    git: "https://github.com/qryxip/oj-verify-playground",
+                    git: "https://github.com/qryxip/competitive-programming-library",
                     rev: None,
                 })),
             },

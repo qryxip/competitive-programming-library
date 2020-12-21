@@ -6,7 +6,7 @@ version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
 license = "CC0-1.0"
-repository = "https://github.com/qryxip/oj-verify-playground"
+repository = "https://github.com/qryxip/competitive-programming-library"
 publish = false
 
 [dependencies]
