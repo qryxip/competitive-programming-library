@@ -1,2 +1,3 @@
-Cargo.lock
+/Cargo.lock
+/proc-macros/*/impl/Cargo.lock
 target/
