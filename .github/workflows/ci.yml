@@ -44,9 +44,7 @@ jobs:
           args: --manifest-path ./xtask/Cargo.toml -- --check
 
       - name: cargo-fmt (proc-macro/*)
-        run: |
-          ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo fmt --manifest-path
-          git diff
+        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 -I % cargo fmt --manifest-path % -- --check
 
       - name: cargo-clippy
         uses: actions-rs/cargo@v1
@@ -61,7 +59,7 @@ jobs:
           args: --manifest-path ./xtask/Cargo.toml -- -D warnings
 
       - name: cargo-clippy (proc-macro/*)
-        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo clippy --all-targets --manifest-path -- -D warnings
+        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 -I % cargo clippy --manifest-path % -- -D warnings
 
   docs-by-xtask-up-to-date:
     name: Docs by xtask up-to-date
