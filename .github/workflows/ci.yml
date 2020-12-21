@@ -61,6 +61,12 @@ jobs:
       - name: cargo-clippy (proc-macro/*)
         run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 -I % cargo clippy --manifest-path % -- -D warnings
 
+      - name: cargo-test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --workspace --exclude qryxip-competitive --no-fail-fast
+
   docs-by-xtask-up-to-date:
     name: Docs by xtask up-to-date
     runs-on: ubuntu-18.04
