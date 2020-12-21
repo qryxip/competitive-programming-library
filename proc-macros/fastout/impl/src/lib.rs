@@ -10,7 +10,7 @@ pub extern "C" fn fastout(attr: TokenStream, item: TokenStream) -> TokenStream {
 }
 
 fn run(attr: TokenStream, item: TokenStream) -> syn::Result<TokenStream> {
-    if attr.is_empty() {
+    if !attr.is_empty() {
         return Err(syn::Error::new(attr.span(), "expected no argument"));
     }
     let item = &syn::parse2::<ItemFn>(item)?;
