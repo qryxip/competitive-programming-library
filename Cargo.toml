@@ -1,5 +1,5 @@
 [workspace]
-members = ["verification/*"]
+members = ["proc-macros/*", "verification/*"]
 
 [package]
 name = "qryxips_competitive_programming_library"

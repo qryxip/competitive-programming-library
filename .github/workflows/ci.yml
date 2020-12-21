@@ -25,6 +25,11 @@ jobs:
           profile: minimal
           components: rustfmt,clippy
 
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+
       #- name: cargo-fmt
       #  uses: actions-rs/cargo@v1
       #  with:
@@ -36,6 +41,9 @@ jobs:
         with:
           command: clippy
           args: --workspace --all-targets --all-features -- -D warnings
+
+      - name: cargo-clippy (proc-macro/*)
+        run: ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo clippy --all-targets --manifest-path
 
   docs-by-xtask-up-to-date:
     name: Docs by xtask up-to-date
@@ -59,7 +67,7 @@ jobs:
           command: xtask
           args: doc
 
-      - name: Docs up-to-date
+      - name: Assert unchanged
         run: git diff
 
   verify:
