@@ -11,6 +11,7 @@ publish = false
 fastout = { path = "{{ out_dir }}/fastout_impl.wasm", function = "fastout" }
 
 [lib]
+name = "fastout"
 proc-macro = true
 
 [dependencies]
