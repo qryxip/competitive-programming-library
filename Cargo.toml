@@ -2,7 +2,7 @@
 members = ["proc-macros/*", "verification/*"]
 
 [package]
-name = "qryxips_competitive_programming_library"
+name = "qryxip-competitive"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -14,12 +14,12 @@ publish = false
 name = "_" # This crate is not intended to be used directly.
 
 [dependencies]
-qryxips-competitive-programming-library-buffered-print = { version = "0.0.0", path = "./crates/io/manifests/buffered_print" }
-qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "./crates/integer/manifests/gcd" }
-qryxips-competitive-programming-library-input = { version = "0.0.0", path = "./crates/io/manifests/input" }
-qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "./crates/prime/manifests/miller_rabin" }
-qryxips-competitive-programming-library-montmort-number = { version = "0.0.0", path = "./crates/integer/manifests/montmort_number" }
-qryxips-competitive-programming-library-partition-point = { version = "0.0.0", path = "./crates/integer/manifests/partition_point" }
-qryxips-competitive-programming-library-rho = { version = "0.0.0", path = "./crates/prime/manifests/rho" }
-qryxips-competitive-programming-library-tonelli-shanks = { version = "0.0.0", path = "./crates/modulo/manifests/tonelli_shanks" }
-qryxips-competitive-programming-library-xorshift = { version = "0.0.0", path = "./crates/integer/manifests/xorshift" }
+qryxip-competitive-buffered-print = { version = "0.0.0", path = "./crates/io/manifests/buffered_print" }
+qryxip-competitive-gcd = { version = "0.0.0", path = "./crates/integer/manifests/gcd" }
+qryxip-competitive-input = { version = "0.0.0", path = "./crates/io/manifests/input" }
+qryxip-competitive-miller-rabin = { version = "0.0.0", path = "./crates/prime/manifests/miller_rabin" }
+qryxip-competitive-montmort-number = { version = "0.0.0", path = "./crates/integer/manifests/montmort_number" }
+qryxip-competitive-partition-point = { version = "0.0.0", path = "./crates/integer/manifests/partition_point" }
+qryxip-competitive-rho = { version = "0.0.0", path = "./crates/prime/manifests/rho" }
+qryxip-competitive-tonelli-shanks = { version = "0.0.0", path = "./crates/modulo/manifests/tonelli_shanks" }
+qryxip-competitive-xorshift = { version = "0.0.0", path = "./crates/integer/manifests/xorshift" }

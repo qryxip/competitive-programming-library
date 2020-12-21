@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-rho"
+name = "qryxip-competitive-rho"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
@@ -12,5 +12,5 @@ name = "rho"
 path = "../../sourcefiles/rho.rs"
 
 [dependencies]
-qryxips-competitive-programming-library-gcd = { version = "0.0.0", path = "../../../integer/manifests/gcd" }
-qryxips-competitive-programming-library-miller-rabin = { version = "0.0.0", path = "../miller_rabin" }
+qryxip-competitive-gcd = { version = "0.0.0", path = "../../../integer/manifests/gcd" }
+qryxip-competitive-miller-rabin = { version = "0.0.0", path = "../miller_rabin" }

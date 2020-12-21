@@ -1,5 +1,5 @@
 [package]
-name = "qryxips-competitive-programming-library-buffered-print"
+name = "qryxip-competitive-buffered-print"
 version = "0.0.0"
 authors = ["Ryo Yamashita <qryxip@gmail.com>"]
 edition = "2018"
