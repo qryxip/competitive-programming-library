@@ -31,11 +31,22 @@ jobs:
         with:
           python-version: 3.9
 
-      #- name: cargo-fmt
-      #  uses: actions-rs/cargo@v1
-      #  with:
-      #    command: fmt
-      #    args: --all -- --check
+      - name: cargo-fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+
+      - name: cargo-fmt (xtask)
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --manifest-path ./xtask/Cargo.toml -- --check
+
+      - name: cargo-fmt (proc-macro/*)
+        run: |
+          ls ./proc-macros/*/Cargo.toml | xargs -n 1 cargo fmt --manifest-path
+          git diff
 
       - name: cargo-clippy
         uses: actions-rs/cargo@v1
