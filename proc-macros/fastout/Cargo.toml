@@ -8,7 +8,7 @@ repository = "https://github.com/qryxip/competitive-programming-library"
 publish = false
 
 [package.metadata.cargo-equip.watt.proc-macro-attribute]
-fastout = { path = "{{ out_dir }}/fastout_impl.wasm", function = "fastout" }
+fastout = { path = "$OUT_DIR/fastout_impl.wasm", function = "fastout" }
 
 [lib]
 name = "fastout"

@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 ac-library-rs-parted-modint = { git = "https://github.com/qryxip/ac-library-rs-parted" }
-qryxip-competitive-buffered-print = { version = "0.0.0", path = "../../crates/io/manifests/buffered_print" }
+qryxip-competitive-fastout = { path = "../../proc-macros/fastout" }
 qryxip-competitive-input = { path = "../../crates/io/manifests/input" }
 qryxip-competitive-montmort-number = { path = "../../crates/integer/manifests/montmort_number" }
 qryxip-competitive-tonelli-shanks = { path = "../../crates/modulo/manifests/tonelli_shanks" }
