@@ -21,5 +21,6 @@ qryxip-competitive-miller-rabin = { version = "0.0.0", path = "./crates/prime/ma
 qryxip-competitive-montmort-number = { version = "0.0.0", path = "./crates/integer/manifests/montmort_number" }
 qryxip-competitive-partition-point = { version = "0.0.0", path = "./crates/integer/manifests/partition_point" }
 qryxip-competitive-rho = { version = "0.0.0", path = "./crates/prime/manifests/rho" }
+qryxip-competitive-sieve = { version = "0.0.0", path = "./crates/prime/manifests/sieve" }
 qryxip-competitive-tonelli-shanks = { version = "0.0.0", path = "./crates/modulo/manifests/tonelli_shanks" }
 qryxip-competitive-xorshift = { version = "0.0.0", path = "./crates/integer/manifests/xorshift" }

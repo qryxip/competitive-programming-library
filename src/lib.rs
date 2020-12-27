@@ -37,4 +37,7 @@ pub mod prime {
     pub mod rho {
         pub use ::rho::*;
     }
+    pub mod sieve {
+        pub use ::sieve::*;
+    }
 }
