@@ -1,5 +1,4 @@
 exclude:
-  - ./src/lib.rs
   - ./xtask/src/main.rs
   - ./target/
   - ./xtask/target/
