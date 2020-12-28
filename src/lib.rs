@@ -2,6 +2,11 @@
 //! Re-exports the library crates for rustdoc.
 //!
 //! This crate itself is not intended to be used directly.
+pub mod graph {
+    pub mod dijkstra {
+        pub use ::dijkstra::*;
+    }
+}
 pub mod integer {
     pub mod gcd {
         #![doc = " Calculates a Greatest Common Divisor (GCD).\n\n ```\n assert_eq!(2, gcd::gcd(10, 2));\n assert_eq!(1, gcd::gcd(10, 3));\n assert_eq!(14, gcd::gcd(56, 42));\n ```"]
