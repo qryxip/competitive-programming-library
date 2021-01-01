@@ -18,6 +18,7 @@ pub mod integer {
         pub use ::montmort_number::*;
     }
     pub mod partition_point {
+        #![doc = " Computes the index of the partition point.\n\n # Examples\n\n ```\n use partition_point::RangeBoundsExt as _;\n\n assert_eq!(1000, (0..1 << 30).partition_point(|n| n.to_string().len() <= 3));\n assert_eq!(100, (0..100).partition_point(|_| true));\n ```\n\n ```\n use partition_point::SliceExt as _;\n\n assert_eq!(5, [0, 0, 0, 0, 0, 1, 1].partition_point(|&x| x == 0));\n ```"]
         pub use ::partition_point::*;
     }
     pub mod xorshift {
