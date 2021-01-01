@@ -14,6 +14,7 @@ pub mod integer {
         pub use ::gcd::*;
     }
     pub mod montmort_number {
+        #![doc = " Computes Montmort numbers.\n\n # Example\n\n ```\n assert_eq!(\n     vec![0usize, 0, 1, 2, 9, 44, 265, 1854, 14833, 133_496, 1_334_961],\n     montmort_number::montmort(10),\n );\n ```"]
         pub use ::montmort_number::*;
     }
     pub mod partition_point {
