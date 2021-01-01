@@ -22,6 +22,7 @@ pub mod integer {
         pub use ::partition_point::*;
     }
     pub mod xorshift {
+        #![doc = " Xorshift.\n\n # Example\n\n ```\n use xorshift::Xorshift64;\n\n let mut xor64 = Xorshift64::new();\n let _: u64 = xor64.next_u64();\n let _: u64 = xor64.next_u64();\n let _: u64 = xor64.next_u64();\n ```"]
         pub use ::xorshift::*;
     }
 }

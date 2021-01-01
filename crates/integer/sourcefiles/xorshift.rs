@@ -1,3 +1,17 @@
+//! Xorshift.
+//!
+//! # Example
+//!
+//! ```
+//! use xorshift::Xorshift64;
+//!
+//! let mut xor64 = Xorshift64::new();
+//! let _: u64 = xor64.next_u64();
+//! let _: u64 = xor64.next_u64();
+//! let _: u64 = xor64.next_u64();
+//! ```
+
+/// 64-bit Xorshift.
 #[derive(Copy, Clone, Debug)]
 pub struct Xorshift64 {
     x: u64,
