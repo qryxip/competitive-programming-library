@@ -12,6 +12,7 @@ where
     WsI: FnMut(&mut Ws, V) -> &mut W,
     W: Copy + Ord + Add<Output = W> + Sum,
 {
+    *cost(&mut costs, start) = iter::empty().sum();
     let queue = &mut BinaryHeap::from(vec![(iter::empty().sum(), start)]);
     while let Some((current_cost, current_node)) = queue.pop() {
         if *cost(&mut costs, current_node) < current_cost {
