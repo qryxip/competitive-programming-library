@@ -1,3 +1,12 @@
+//! Performs Pollard's rho algorithm.
+//!
+//! # Example
+//!
+//! ```
+//! assert_eq!([1_162_193, 1_347_377], *rho::factorize(1_565_912_117_761));
+//! ```
+
+/// Performs Pollard's rho algorithm.
 pub fn factorize(n: u64) -> Vec<u64> {
     if n <= 1 {
         return vec![];

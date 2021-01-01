@@ -46,6 +46,7 @@ pub mod prime {
         pub use ::miller_rabin::*;
     }
     pub mod rho {
+        #![doc = " Performs Pollard's rho algorithm.\n\n # Example\n\n ```\n assert_eq!([1_162_193, 1_347_377], *rho::factorize(1_565_912_117_761));\n ```"]
         pub use ::rho::*;
     }
     pub mod sieve {
