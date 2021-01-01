@@ -3,7 +3,7 @@ pub fn factorize(n: u64) -> Vec<u64> {
         return vec![];
     }
 
-    if miller_rabin::miller_rabin(n) {
+    if miller_rabin::is_prime(n) {
         return vec![n];
     }
 
@@ -16,7 +16,7 @@ pub fn factorize(n: u64) -> Vec<u64> {
 
 #[allow(clippy::many_single_char_names)]
 fn rho(n: u64) -> u64 {
-    debug_assert!(!miller_rabin::miller_rabin(n));
+    debug_assert!(!miller_rabin::is_prime(n));
 
     if n % 2 == 0 {
         return 2;

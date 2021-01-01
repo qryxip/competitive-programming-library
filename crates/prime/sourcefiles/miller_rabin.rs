@@ -1,5 +1,5 @@
 #[allow(clippy::clippy::many_single_char_names)]
-pub fn miller_rabin(n: u64) -> bool {
+pub fn is_prime(n: u64) -> bool {
     // https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
 
     if n == 2 {
@@ -85,7 +85,7 @@ mod tests {
         const LIMIT: usize = 1_000_000;
         let sieve = Sieve::new(LIMIT);
         for x in 0..LIMIT {
-            assert_eq!(sieve.is_prime(x), super::miller_rabin(x as _));
+            assert_eq!(sieve.is_prime(x), super::is_prime(x as _));
         }
     }
 }
