@@ -14,7 +14,6 @@ publish = false
 name = "_" # This crate is not intended to be used directly.
 
 [dependencies]
-qryxip-competitive-buffered-print = { version = "0.0.0", path = "./crates/io/manifests/buffered_print" }
 qryxip-competitive-dijkstra = { version = "0.0.0", path = "./crates/graph/manifests/dijkstra" }
 qryxip-competitive-gcd = { version = "0.0.0", path = "./crates/integer/manifests/gcd" }
 qryxip-competitive-input = { version = "0.0.0", path = "./crates/io/manifests/input" }
