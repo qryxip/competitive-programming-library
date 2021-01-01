@@ -1,8 +1,22 @@
+//! A prime sieve.
+//!
+//! # Example
+//!
+//! ```
+//! use sieve::Sieve;
+//!
+//! let sieve = Sieve::new(30);
+//!
+//! assert!(sieve.is_prime(2));
+//! assert_eq!([(2, 2), (3, 2), (5, 2)], *sieve.factorize(900));
+//! ```
+
 // TODO:
 //
 // - Use better sieve altorithm
 // - Use bitset
 
+/// A prime sieve.
 pub struct Sieve(Vec<bool>);
 
 impl Sieve {

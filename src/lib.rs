@@ -48,6 +48,7 @@ pub mod prime {
         pub use ::rho::*;
     }
     pub mod sieve {
+        #![doc = " A prime sieve.\n\n # Example\n\n ```\n use sieve::Sieve;\n\n let sieve = Sieve::new(30);\n\n assert!(sieve.is_prime(2));\n assert_eq!([(2, 2), (3, 2), (5, 2)], *sieve.factorize(900));\n ```"]
         pub use ::sieve::*;
     }
 }
