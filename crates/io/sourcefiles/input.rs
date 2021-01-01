@@ -53,9 +53,21 @@ macro_rules! read {
     (from $scanner:ident { ($($tt:tt),+) }) => {
         ($($crate::read!(from $scanner { $tt })),*)
     };
+    (from $scanner:ident {{ |$x:ident: $ty:ty| $expr:expr }}) => {
+        $crate::apply(|$x: $ty| $expr, $crate::read!(from $scanner { $ty }))
+    };
     (from $scanner:ident { $ty:ty }) => {
         <$ty as $crate::Readable>::read_from_scanner(&mut $scanner)
     };
+}
+
+#[doc(hidden)]
+#[inline]
+pub fn apply<F, X, O>(f: F, x: X) -> O
+where
+    F: FnOnce(X) -> O,
+{
+    f(x)
 }
 
 #[macro_export]
