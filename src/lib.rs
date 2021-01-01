@@ -36,6 +36,7 @@ pub mod io {
 }
 pub mod modulo {
     pub mod tonelli_shanks {
+        #![doc = " Performs Tonelli–Shanks algorithm.\n\n # Example\n\n ```\n # use __acl_modint as acl_modint;\n use acl_modint::ModInt1000000007 as Mint;\n use tonelli_shanks::ModIntBaseExt as _;\n\n assert_eq!(Some(82_681_419.into()), Mint::new(42).sqrt());\n ```"]
         pub use ::tonelli_shanks::*;
     }
 }

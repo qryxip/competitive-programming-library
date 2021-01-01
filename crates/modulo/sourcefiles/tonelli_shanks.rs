@@ -1,3 +1,15 @@
+//! Performs Tonelli–Shanks algorithm.
+//!
+//! # Example
+//!
+//! ```
+//! # use __acl_modint as acl_modint;
+//! use acl_modint::ModInt1000000007 as Mint;
+//! use tonelli_shanks::ModIntBaseExt as _;
+//!
+//! assert_eq!(Some(82_681_419.into()), Mint::new(42).sqrt());
+//! ```
+
 mod extern_crates {
     pub(super) extern crate __acl_modint as acl_modint;
     pub(super) extern crate __xorshift as xorshift;
@@ -5,7 +17,9 @@ mod extern_crates {
 
 use self::extern_crates::{acl_modint::ModIntBase, xorshift::Xorshift64};
 
+/// Performs Tonelli–Shanks algorithm.
 pub trait ModIntBaseExt: ModIntBase {
+    /// Performs Tonelli–Shanks algorithm.
     fn sqrt(self) -> Option<Self> {
         let q = u64::from((Self::modulus() - 1) >> (Self::modulus() - 1).trailing_zeros());
         let s = (Self::modulus() - 1).trailing_zeros();
