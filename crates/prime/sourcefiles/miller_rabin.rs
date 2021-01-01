@@ -1,3 +1,12 @@
+//! Performs Miller-Rabin test.
+//!
+//! # Example
+//!
+//! ```
+//! assert!(miller_rabin::is_prime(22_801_763_489));
+//! ```
+
+/// Performs Miller-Rabin test.
 #[allow(clippy::clippy::many_single_char_names)]
 pub fn is_prime(n: u64) -> bool {
     // https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test

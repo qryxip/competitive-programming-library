@@ -42,6 +42,7 @@ pub mod modulo {
 }
 pub mod prime {
     pub mod miller_rabin {
+        #![doc = " Performs Miller-Rabin test.\n\n # Example\n\n ```\n assert!(miller_rabin::is_prime(22_801_763_489));\n ```"]
         pub use ::miller_rabin::*;
     }
     pub mod rho {
