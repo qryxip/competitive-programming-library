@@ -31,6 +31,7 @@ pub mod io {
         pub use ::buffered_print::*;
     }
     pub mod input {
+        #![doc = " Provides `input!` macro.\n\n # Example\n\n ```no_run\n #[macro_use]\n extern crate input as _;\n\n fn main() {\n     // https://atcoder.jp/contests/abc166/tasks/abc166_b\n\n     input! {\n         n: usize,\n         ass: [[{|a: usize| a - 1}]],\n     }\n\n     let _: usize = n;\n     let _: Vec<Vec<usize>> = ass;\n }\n ```"]
         pub use ::input::*;
     }
 }

@@ -1,3 +1,24 @@
+//! Provides `input!` macro.
+//!
+//! # Example
+//!
+//! ```no_run
+//! #[macro_use]
+//! extern crate input as _;
+//!
+//! fn main() {
+//!     // https://atcoder.jp/contests/abc166/tasks/abc166_b
+//!
+//!     input! {
+//!         n: usize,
+//!         ass: [[{|a: usize| a - 1}]],
+//!     }
+//!
+//!     let _: usize = n;
+//!     let _: Vec<Vec<usize>> = ass;
+//! }
+//! ```
+
 use std::{
     cell::RefCell,
     fmt::Debug,
