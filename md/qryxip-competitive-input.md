@@ -15,7 +15,7 @@ fn main() {
 
     input! {
         n: usize,
-        ass: [[{|a: usize| a - 1}]],
+        ass: [[{ input::usize1 }]],
     }
 
     let _: usize = n;

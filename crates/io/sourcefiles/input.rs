@@ -11,7 +11,7 @@
 //!
 //!     input! {
 //!         n: usize,
-//!         ass: [[{|a: usize| a - 1}]],
+//!         ass: [[{ input::usize1 }]],
 //!     }
 //!
 //!     let _: usize = n;
@@ -74,21 +74,12 @@ macro_rules! read {
     (from $scanner:ident { ($($tt:tt),+) }) => {
         ($($crate::read!(from $scanner { $tt })),*)
     };
-    (from $scanner:ident {{ |$x:ident: $ty:ty| $expr:expr }}) => {
-        $crate::apply(|$x: $ty| $expr, $crate::read!(from $scanner { $ty }))
+    (from $scanner:ident { { $f:expr } }) => {
+        $crate::FnOnceExt::<_>::call_once_from_reader($f, &mut $scanner)
     };
     (from $scanner:ident { $ty:ty }) => {
         <$ty as $crate::Readable>::read_from_scanner(&mut $scanner)
     };
-}
-
-#[doc(hidden)]
-#[inline]
-pub fn apply<F, X, O>(f: F, x: X) -> O
-where
-    F: FnOnce(X) -> O,
-{
-    f(x)
 }
 
 #[macro_export]
@@ -110,6 +101,36 @@ macro_rules! readable {
             }
         }
     };
+}
+
+#[inline]
+pub fn usize1(n: usize) -> usize {
+    n - 1
+}
+
+#[inline]
+pub fn bytes(s: String) -> Vec<u8> {
+    s.into()
+}
+
+#[doc(hidden)]
+pub trait FnOnceExt<A> {
+    type Output;
+    fn call_once_from_reader(this: Self, scanner: &mut Scanner) -> Self::Output;
+}
+
+impl<A, O, F> FnOnceExt<A> for F
+where
+    A: FromStr,
+    A::Err: Debug,
+    F: FnOnce(A) -> O,
+{
+    type Output = O;
+
+    #[inline]
+    fn call_once_from_reader(this: Self, scanner: &mut Scanner) -> O {
+        this(A::read_from_scanner(scanner))
+    }
 }
 
 pub enum Scanner {
