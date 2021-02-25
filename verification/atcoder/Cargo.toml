@@ -1,0 +1,14 @@
+[package]
+name = "atcoder"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+license = "CC0-1.0"
+publish = false
+
+[package.metadata.cargo-compete.bin]
+abc162-c = { problem = "https://atcoder.jp/contests/abc162/tasks/abc162_c" }
+
+[dependencies]
+qryxip-competitive-gcd = { path = "../../libs/integer/gcd" }
+qryxip-competitive-input = { path = "../../libs/io/input" }

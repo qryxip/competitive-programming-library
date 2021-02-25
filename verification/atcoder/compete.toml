@@ -1,0 +1,24 @@
+test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
+
+[template]
+src = '''
+#[macro_use]
+extern crate input as _;
+
+fn main() {
+    input! {
+        n: usize,
+    }
+}
+'''
+
+[add]
+url = "{{ args[0] }}"
+bin-name = '{% assign s = args[0] | split: "/" %}{{ s[6] | replace: "_", "-" }}'
+
+[test]
+profile = "release"
+
+[submit.transpile]
+kind = "command"
+args = ["cargo", "equip", "--resolve-cfgs", "--remove", "docs", "--minify", "libs", "--rustfmt", "--check", "--bin", "{{ bin_name }}"]
