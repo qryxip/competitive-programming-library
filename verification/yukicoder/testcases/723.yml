@@ -1,0 +1,10 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases: []
+
+extend:
+  - type: SystemTestCases
+    problem: "https://yukicoder.me/problems/no/723"

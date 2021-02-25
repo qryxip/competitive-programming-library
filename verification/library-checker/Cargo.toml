@@ -6,9 +6,13 @@ edition = "2018"
 license = "CC0-1.0"
 publish = false
 
+[package.metadata.cargo-compete.bin]
+montmort-number-mod = { problem = "https://judge.yosupo.jp/problem/montmort_number_mod" }
+sqrt-mod = { problem = "https://judge.yosupo.jp/problem/sqrt_mod" }
+
 [dependencies]
 ac-library-rs-parted-modint = { git = "https://github.com/qryxip/ac-library-rs-parted" }
 qryxip-competitive-fastout = { path = "../../proc-macros/fastout" }
-qryxip-competitive-input = { path = "../../crates/io/manifests/input" }
-qryxip-competitive-montmort-number = { path = "../../crates/integer/manifests/montmort_number" }
-qryxip-competitive-tonelli-shanks = { path = "../../crates/modulo/manifests/tonelli_shanks" }
+qryxip-competitive-input = { path = "../../libs/io/input" }
+qryxip-competitive-montmort-number = { path = "../../libs/integer/montmort_number" }
+qryxip-competitive-tonelli-shanks = { path = "../../libs/modulo/tonelli_shanks" }

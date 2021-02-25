@@ -1,0 +1,14 @@
+[package]
+name = "qryxip-competitive-sieve"
+version = "0.0.0"
+authors = ["Ryo Yamashita <qryxip@gmail.com>"]
+edition = "2018"
+license = "CC0-1.0"
+repository = "https://github.com/qryxip/competitive-programming-library"
+publish = false
+
+[lib]
+name = "sieve"
+
+[dev-dependencies]
+primal-sieve = "0.3.1"

@@ -1,0 +1,13 @@
+---
+type: Batch
+timelimit: 10s
+match:
+  Checker:
+    cmd: ~/.cache/online-judge-tools/library-checker-problems/math/sqrt_mod/checker "$INPUT" "$ACTUAL_OUTPUT" "$EXPECTED_OUTPUT"
+    shell: Bash
+
+cases: []
+
+extend:
+  - type: SystemTestCases
+    problem: https://judge.yosupo.jp/problem/sqrt_mod

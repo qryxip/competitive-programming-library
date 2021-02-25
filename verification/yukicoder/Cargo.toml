@@ -6,6 +6,9 @@ edition = "2018"
 license = "CC0-1.0"
 publish = false
 
+[package.metadata.cargo-compete.bin]
+723 = { problem = "https://yukicoder.me/problems/no/723" }
+
 [dependencies]
-qryxip-competitive-input = { path = "../../crates/io/manifests/input" }
-qryxip-competitive-partition-point = { path = "../../crates/integer/manifests/partition_point" }
+qryxip-competitive-input = { path = "../../libs/io/input" }
+qryxip-competitive-partition-point = { path = "../../libs/integer/partition_point" }
