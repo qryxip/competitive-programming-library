@@ -7,4 +7,3 @@ cases: []
 
 extend:
   - type: SystemTestCases
-    problem: "https://atcoder.jp/contests/abc162/tasks/abc162_c"
