@@ -1,5 +1,3 @@
-// verify-helper: PROBLEM https://yukicoder.me/problems/no/723
-
 #[macro_use]
 extern crate input as _;
 
