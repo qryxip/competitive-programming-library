@@ -5,6 +5,5 @@ members = [
   "libs/io/*",
   "libs/modulo/*",
   "libs/prime/*",
-  "proc-macros/*",
   "verification/*",
 ]
