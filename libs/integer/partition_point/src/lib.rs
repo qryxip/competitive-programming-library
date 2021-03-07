@@ -12,7 +12,15 @@
 //! ```
 //! use partition_point::SliceExt as _;
 //!
-//! assert_eq!(5, [0, 0, 0, 0, 0, 1, 1].partition_point(|&x| x == 0));
+//! assert_eq!(5, [0,    0,    0,    0,    0,    1,    1].partition_point(|&x| x == 0));
+//! //             ^     ^     ^     ^     ^     ^     ^
+//! //  index:     0     1     2     3     4     5     6
+//! //  predicate: true  true  true  true  true  false false
+//!
+//! assert_eq!(7, [(),   (),   (),   (),   (),   (),   ()].partition_point(|_| true));
+//! //             ^     ^     ^     ^     ^     ^     ^
+//! //  index:     0     1     2     3     4     5     6
+//! //  predicate: true  true  true  true  true  true  true
 //! ```
 
 use std::{
