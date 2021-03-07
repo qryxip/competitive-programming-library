@@ -83,6 +83,9 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Install `oj`
+        run: pip install online-judge-tools
+
       - name: Resolve `cargo-udeps ^0.1`
         id: resolve-version-of-cargo-udeps
         run: |
