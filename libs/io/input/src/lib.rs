@@ -30,7 +30,7 @@ use std::{
 #[macro_export]
 macro_rules! input {
     (from $scanner:ident; $($tt:tt)*) => {
-        $crate::input_inner!(@scanner($scanner), @tts($($tt)*))
+        $crate::__input_inner!(@scanner($scanner), @tts($($tt)*))
     };
     ($($tt:tt)*) => {
         let __scanner = $crate::DEFAULT_SCANNER.with(|__scanner| __scanner.clone());
@@ -38,41 +38,43 @@ macro_rules! input {
         if let $crate::Scanner::Uninited = *__scanner_ref {
             *__scanner_ref = $crate::Scanner::stdin_auto().unwrap();
         }
-        $crate::input_inner!(@scanner(__scanner_ref), @tts($($tt)*));
+        $crate::__input_inner!(@scanner(__scanner_ref), @tts($($tt)*));
         ::std::mem::drop(__scanner_ref);
         ::std::mem::drop(__scanner);
     };
 }
 
+#[doc(hidden)]
 #[macro_export]
-macro_rules! input_inner {
+macro_rules! __input_inner {
     (@scanner($scanner:ident), @tts()) => {};
     (@scanner($scanner:ident), @tts(mut $single_tt_pat:tt : $readable:tt)) => {
-        let mut $single_tt_pat = $crate::read!(from $scanner { $readable });
+        let mut $single_tt_pat = $crate::__read!(from $scanner { $readable });
     };
     (@scanner($scanner:ident), @tts($single_tt_pat:tt : $readable:tt)) => {
-        let $single_tt_pat = $crate::read!(from $scanner { $readable });
+        let $single_tt_pat = $crate::__read!(from $scanner { $readable });
     };
     (@scanner($scanner:ident), @tts(mut $single_tt_pat:tt : $readable:tt, $($rest:tt)*)) => {
-        $crate::input_inner!(@scanner($scanner), @tts(mut $single_tt_pat: $readable));
-        $crate::input_inner!(@scanner($scanner), @tts($($rest)*));
+        $crate::__input_inner!(@scanner($scanner), @tts(mut $single_tt_pat: $readable));
+        $crate::__input_inner!(@scanner($scanner), @tts($($rest)*));
     };
     (@scanner($scanner:ident), @tts($single_tt_pat:tt : $readable:tt, $($rest:tt)*)) => {
-        $crate::input_inner!(@scanner($scanner), @tts($single_tt_pat: $readable));
-        $crate::input_inner!(@scanner($scanner), @tts($($rest)*));
+        $crate::__input_inner!(@scanner($scanner), @tts($single_tt_pat: $readable));
+        $crate::__input_inner!(@scanner($scanner), @tts($($rest)*));
     };
 }
 
+#[doc(hidden)]
 #[macro_export]
-macro_rules! read {
+macro_rules! __read {
     (from $scanner:ident { [$tt:tt] }) => {
-        $crate::read!(from $scanner { [$tt; $crate::read!(from $scanner { usize })] })
+        $crate::__read!(from $scanner { [$tt; $crate::__read!(from $scanner { usize })] })
     };
     (from $scanner:ident  { [$tt:tt; $n:expr] }) => {
-        (0..$n).map(|_| $crate::read!(from $scanner { $tt })).collect::<Vec<_>>()
+        (0..$n).map(|_| $crate::__read!(from $scanner { $tt })).collect::<Vec<_>>()
     };
     (from $scanner:ident { ($($tt:tt),+) }) => {
-        ($($crate::read!(from $scanner { $tt })),*)
+        ($($crate::__read!(from $scanner { $tt })),*)
     };
     (from $scanner:ident { { $f:expr } }) => {
         $crate::FnOnceExt::<_>::call_once_from_reader($f, &mut $scanner)
@@ -188,6 +190,7 @@ impl Scanner {
 }
 
 thread_local! {
+    #[doc(hidden)]
     pub static DEFAULT_SCANNER: Rc<RefCell<Scanner>> = Rc::new(RefCell::new(Scanner::Uninited));
 }
 
