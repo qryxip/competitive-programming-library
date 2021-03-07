@@ -30,6 +30,7 @@ use std::{
     str::{FromStr, SplitWhitespace},
 };
 
+/// A `input!` macro.
 #[macro_export]
 macro_rules! input {
     (from $scanner:ident; $($tt:tt)*) => {
@@ -87,11 +88,13 @@ macro_rules! __read {
     };
 }
 
+#[deprecated(note = "Use `Usize1` instead")]
 #[inline]
 pub fn usize1(n: usize) -> usize {
     n - 1
 }
 
+#[deprecated(note = "Use `Bytes` instead")]
 #[inline]
 pub fn bytes(s: String) -> Vec<u8> {
     s.into()
@@ -172,6 +175,7 @@ thread_local! {
     pub static DEFAULT_SCANNER: Rc<RefCell<Scanner>> = Rc::new(RefCell::new(Scanner::Uninited));
 }
 
+/// A trait representing which type can be read.
 pub trait Readable {
     type Output;
 
