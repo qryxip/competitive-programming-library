@@ -1,9 +1,9 @@
 [workspace]
 members = [
-  "libs/graph/*",
-  "libs/integer/*",
-  "libs/io/*",
-  "libs/modulo/*",
-  "libs/prime/*",
+  "crates/graph/*",
+  "crates/integer/*",
+  "crates/io/*",
+  "crates/modulo/*",
+  "crates/prime/*",
   "verification/*",
 ]

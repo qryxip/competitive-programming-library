@@ -10,5 +10,5 @@ publish = false
 723 = { problem = "https://yukicoder.me/problems/no/723" }
 
 [dependencies]
-qryxip-competitive-input = { path = "../../libs/io/input" }
-qryxip-competitive-partition-point = { path = "../../libs/integer/partition_point" }
+qryxip-competitive-input = { path = "../../crates/io/input" }
+qryxip-competitive-partition-point = { path = "../../crates/integer/partition_point" }

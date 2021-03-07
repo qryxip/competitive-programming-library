@@ -11,6 +11,6 @@ abc162-c = { problem = "https://atcoder.jp/contests/abc162/tasks/abc162_c" }
 abc174-e = { problem = "https://atcoder.jp/contests/abc174/tasks/abc174_e" }
 
 [dependencies]
-qryxip-competitive-gcd = { path = "../../libs/integer/gcd" }
-qryxip-competitive-input = { path = "../../libs/io/input" }
-qryxip-competitive-partition-point = { path = "../../libs/integer/partition_point" }
+qryxip-competitive-gcd = { path = "../../crates/integer/gcd" }
+qryxip-competitive-input = { path = "../../crates/io/input" }
+qryxip-competitive-partition-point = { path = "../../crates/integer/partition_point" }
