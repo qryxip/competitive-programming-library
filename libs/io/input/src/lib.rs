@@ -80,28 +80,7 @@ macro_rules! __read {
         $crate::FnOnceExt::<_>::call_once_from_reader($f, &mut $scanner)
     };
     (from $scanner:ident { $ty:ty }) => {
-        <$ty as $crate::Readable>::read_from_scanner(&mut $scanner)
-    };
-}
-
-#[macro_export]
-macro_rules! readable {
-    ($name:ident; |$scanner:ident| { $($body:tt)* }) => {
-        $crate::readable!($name; |$scanner| -> () { $($body)* });
-    };
-    ($name:ident; |$scanner:ident| $expr:expr) => {
-        $crate::readable!($name; |$scanner| -> () { $expr });
-    };
-    ($name:ident; |$scanner:ident| -> $output:ty { $($body:tt)* }) => {
-        enum $name {}
-
-        impl $crate::Readable for $name {
-            type Output = $output;
-
-            fn read_from_scanner(mut $scanner: &mut $crate::Scanner) -> $output {
-                $($body)*
-            }
-        }
+        <$ty as $crate::Readable>::read(|| $scanner.next_unwrap())
     };
 }
 
@@ -131,10 +110,11 @@ where
 
     #[inline]
     fn call_once_from_reader(this: Self, scanner: &mut Scanner) -> O {
-        this(A::read_from_scanner(scanner))
+        this(scanner.next_unwrap().parse().unwrap())
     }
 }
 
+#[doc(hidden)]
 pub enum Scanner {
     Uninited,
     Once {
@@ -169,10 +149,7 @@ impl Scanner {
         }
     }
 
-    pub fn parse_next_unwrap<T: FromStr>(&mut self) -> T
-    where
-        T::Err: Debug,
-    {
+    pub fn next_unwrap(&mut self) -> &'static str {
         match self {
             Self::Uninited => None,
             Self::Once { words } => words.next(),
@@ -184,8 +161,6 @@ impl Scanner {
             }),
         }
         .expect("reached EOF")
-        .parse()
-        .unwrap()
     }
 }
 
@@ -197,7 +172,7 @@ thread_local! {
 pub trait Readable {
     type Output;
 
-    fn read_from_scanner(scanner: &mut Scanner) -> Self::Output;
+    fn read<'a, F: FnMut() -> &'a str>(get: F) -> Self::Output;
 }
 
 impl<T: FromStr> Readable for T
@@ -206,7 +181,7 @@ where
 {
     type Output = Self;
 
-    fn read_from_scanner(scanner: &mut Scanner) -> Self {
-        scanner.parse_next_unwrap()
+    fn read<'a, F: FnMut() -> &'a str>(mut get: F) -> Self {
+        get().parse().unwrap()
     }
 }
