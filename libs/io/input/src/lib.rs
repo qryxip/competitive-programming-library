@@ -6,12 +6,15 @@
 //! #[macro_use]
 //! extern crate input as _;
 //!
+//! use input::Usize1;
+//!
 //! fn main() {
 //!     // https://atcoder.jp/contests/abc166/tasks/abc166_b
 //!
 //!     input! {
 //!         n: usize,
-//!         ass: [[{ input::usize1 }]],
+//!         //ass: [[{ |n: usize| n - 1 }]],
+//!         ass: [[Usize1]],
 //!     }
 //!
 //!     let _: usize = n;
@@ -183,5 +186,27 @@ where
 
     fn read<'a, F: FnMut() -> &'a str>(mut get: F) -> Self {
         get().parse().unwrap()
+    }
+}
+
+/// 1-based index.
+pub enum Usize1 {}
+
+impl Readable for Usize1 {
+    type Output = usize;
+
+    fn read<'a, F: FnMut() -> &'a str>(get: F) -> usize {
+        usize::read(get) - 1
+    }
+}
+
+/// Reads a string as `Vec<u8>`.
+pub enum Bytes {}
+
+impl Readable for Bytes {
+    type Output = Vec<u8>;
+
+    fn read<'a, F: FnMut() -> &'a str>(mut get: F) -> Vec<u8> {
+        get().into()
     }
 }
