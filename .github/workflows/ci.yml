@@ -157,7 +157,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: cpl
-          args: verify
+          args: verify gh-pages
         env:
           RUST_BACKTRACE: full
           DROPBOX_ACCESS_TOKEN: ${{ secrets.DROPBOX_ACCESS_TOKEN }}
