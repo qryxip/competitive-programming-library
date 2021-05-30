@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Bytes","Reads a string as `Vec<u8>`."],["Usize1","1-based index."]],"fn":[["bytes",""],["usize1",""]],"macro":[["input","A `input!` macro."]],"trait":[["Readable","A trait representing which type can be read."]]});

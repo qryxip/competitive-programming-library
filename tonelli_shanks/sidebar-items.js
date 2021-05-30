@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["ModIntBaseExt","Performs Tonelli–Shanks algorithm."]]});

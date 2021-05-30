@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Performs Pollard’s rho algorithm."><meta name="keywords" content="rust, rustlang, rust-lang, factorize"><title>factorize in rho - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../ayu.css" disabled ><script id="default-settings"></script><script src="../storage.js"></script><script src="../crates.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" type="image/png" href="../favicon-16x16.png">
+<link rel="alternate icon" type="image/png" href="../favicon-32x32.png"><script>
+"use strict";
+
+registerModification(
+    "https://github.com/qryxip/competitive-programming-library/blob/dadeb6e4685a86f25b4e5c8079f56337321aa12e/crates/prime/rho",
+    "CC0-1.0",
+    "cargo add qryxip-competitive-rho --git https://github.com/qryxip/competitive-programming-library",
+    [["qryxip-competitive-gcd (path+../../integer/gcd)","../gcd/index.html"],["qryxip-competitive-miller-rabin (path+../miller_rabin)","../miller_rabin/index.html"]],
+    2054,
+    [],
+);
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function registerModification(manifestDirBlobURL, license, cargoAddCommand, dependencyUL, codeSizeUnmodified, verifiedWith) {
+    if (!window.location.pathname.endsWith("/index.html")) {
+        return;
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        const docblock = findOrCreateDocblock();
+        if (docblock === null) {
+            return;
+        }
+        downgradeSectionHeaders(docblock);
+        docblock.prepend(createHeader("Description", "description"));
+        docblock.prepend(createVerifiedWithSection(verifiedWith));
+        docblock.prepend(createHeader("Verified with", "verified-with"));
+        if (codeSizeUnmodified !== null) {
+            docblock.prepend(createCodeSizeSection(codeSizeUnmodified));
+            docblock.prepend(createHeader("Code size", "code-size"));
+        }
+        docblock.prepend(createDependenciesSection(dependencyUL));
+        docblock.prepend(createHeader("Dependencies", "dependencies"));
+        docblock.prepend(createCargoAddCommandSection(cargoAddCommand));
+        docblock.prepend(createFirstSection(manifestDirBlobURL, license));
+    });
+}
+function findOrCreateDocblock() {
+    let docblock = document.querySelector(".docblock");
+    if (docblock !== null) {
+        return docblock;
+    }
+    const fqn = document.querySelector(".fqn");
+    if (fqn === null) {
+        return null;
+    }
+    docblock = document.createElement("div");
+    docblock.setAttribute("class", "docblock");
+    fqn.insertAdjacentElement("afterend", docblock);
+    fqn.insertAdjacentElement("afterend", createToggleWrapper());
+    return docblock;
+}
+function createToggleWrapper() {
+    const toggleWrapper = document.createElement("div");
+    const a = document.createElement("a");
+    const span1 = document.createElement("span");
+    const span2 = document.createElement("span");
+    toggleWrapper.setAttribute("class", "toggle-wrapper");
+    a.setAttribute("class", "collapse-toggle");
+    a.setAttribute("href", "javascript:void(0)");
+    span1.setAttribute("class", "inner");
+    span2.setAttribute("class", "toggle-label");
+    span2.setAttribute("style", "display: none;");
+    span1.append("-");
+    span2.append(" Expand description");
+    a.append("[", span1, "] ", span2);
+    toggleWrapper.append(a);
+    return toggleWrapper;
+}
+function downgradeSectionHeaders(docblock) {
+    docblock.querySelectorAll(".section-header").forEach((sectionHeader) => {
+        const replacement = document.createElement((() => {
+            switch (sectionHeader.tagName) {
+                case "H1":
+                    return "H2";
+                case "H2":
+                    return "H3";
+                case "H3":
+                    return "H4";
+                case "H4":
+                    return "H5";
+                case "H5":
+                    return "H6";
+                default:
+                    return sectionHeader.tagName;
+            }
+        })());
+        for (const { name, value } of sectionHeader.attributes) {
+            replacement.setAttribute(name, value);
+        }
+        replacement.append(...sectionHeader.childNodes);
+        sectionHeader.replaceWith(replacement);
+    });
+}
+function createVerifiedWithSection(verifiedWith) {
+    const div = document.createElement("div");
+    switch (verifiedWith.length) {
+        case 0: {
+            const strong = document.createElement("strong");
+            strong.append(createWarningMark(), " This library is not verified.");
+            div.append(strong);
+            break;
+        }
+        case 1:
+            div.append(createHeavyCheckMark(), " This library verified with 1 solution.");
+            break;
+        default:
+            div.append(createHeavyCheckMark(), " This library verified with " + verifiedWith.length + " solutions.");
+    }
+    const ul = document.createElement("ul");
+    for (const [problemURL, blobURL] of verifiedWith) {
+        const li = document.createElement("li");
+        const a1 = document.createElement("a");
+        a1.setAttribute("href", problemURL);
+        a1.append(problemURL);
+        const a2 = document.createElement("a");
+        a2.setAttribute("href", blobURL);
+        a2.append("code");
+        li.append(a1, " (", a2, ")");
+        ul.append(li);
+    }
+    div.append(ul);
+    return div;
+}
+function createHeavyCheckMark() {
+    return createMark("https://github.githubassets.com/images/icons/emoji/unicode/2714.png", "✔");
+}
+function createWarningMark() {
+    return createMark("https://github.githubassets.com/images/icons/emoji/unicode/26a0.png", "⚠");
+}
+function createMark(src, char) {
+    const mark = document.createElement("img");
+    mark.setAttribute("src", src);
+    mark.setAttribute("alt", char);
+    mark.setAttribute("title", char);
+    mark.setAttribute("width", "20");
+    mark.setAttribute("height", "20");
+    return mark;
+}
+function createCodeSizeSection(codeSizeUnmodified) {
+    const ul = document.createElement("ul");
+    const li1 = document.createElement("li");
+    li1.append("unmodified: ");
+    if (typeof codeSizeUnmodified === "number") {
+        const div = Math.floor(codeSizeUnmodified / 1024);
+        const rem = codeSizeUnmodified % 1024;
+        li1.append("" + div + "." + Math.floor((10 * rem) / 1024) + " KiB");
+    }
+    else {
+        const code = document.createElement("code");
+        code.append(codeSizeUnmodified);
+        li1.append(code);
+    }
+    li1.append(" + (not yet implemented) KiB");
+    const li2 = document.createElement("li");
+    const li3 = document.createElement("li");
+    const code1 = document.createElement("code");
+    const code2 = document.createElement("code");
+    code1.append("#[cfg]");
+    code2.append("#[cfg]");
+    li2.append(code1, " resolved + (doc-)comment removed + Rustfmt: (not yet implemented)");
+    li3.append(code2, " resolved + doc-comment removed + minified: (not yet implemented)");
+    ul.append(li1, li2, li3);
+    return ul;
+}
+function createDependenciesSection(items) {
+    if (items.length === 0) {
+        return "No dependencies.";
+    }
+    const ul = document.createElement("ul");
+    for (const [text, href] of items) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.setAttribute("href", href);
+        a.append(text);
+        li.append(a);
+        ul.append(li);
+    }
+    return ul;
+}
+function createCargoAddCommandSection(cargoAddCommand) {
+    const pre = document.createElement("pre");
+    const code = document.createElement("code");
+    code.setAttribute("class", "language-console");
+    code.append("$ " + cargoAddCommand + "\n");
+    pre.append(code);
+    return pre;
+}
+function createFirstSection(manifestDirBlobURL, license) {
+    const ul = document.createElement("ul");
+    const li1 = document.createElement("li");
+    const a = document.createElement("a");
+    const li2 = document.createElement("li");
+    let licenseElement;
+    a.setAttribute("href", manifestDirBlobURL);
+    a.append("View on GitHub");
+    li1.append(a);
+    if (license === null) {
+        licenseElement = document.createElement("strong");
+        licenseElement.append("missing");
+    }
+    else {
+        licenseElement = document.createElement("code");
+        licenseElement.append(license);
+    }
+    li2.append("License: ", licenseElement);
+    ul.append(li1, li2);
+    return ul;
+}
+function createHeader(name, id) {
+    const header = document.createElement("h1");
+    header.setAttribute("id", id);
+    header.setAttribute("class", "section-header");
+    const a = document.createElement("a");
+    a.setAttribute("href", "#" + id);
+    a.append(document.createTextNode(name));
+    header.append(a);
+    return header;
+}
+</script>
+
+<style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc fn"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../rho/index.html'><div class='logo-container rust-logo'><img src='../rust-logo.png' alt='logo'></div></a><div class="sidebar-elems"><p class="location"><a href="index.html">rho</a></p><div id="sidebar-vars" data-name="factorize" data-ty="fn" data-relpath=""></div><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu"><img src="../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button">?</button>
+                <a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class="fqn"><span class="in-band">Function <a href="index.html">rho</a>::<wbr><a class="fn" href="">factorize</a><button id="copy-path" onclick="copy_path(this)"><img src="../clipboard.svg" width="19" height="18" alt="Copy item import"></button></span><span class="out-of-band"><span id="render-detail"><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class="inner">&#x2212;</span>]</a></span><a class="srclink" href="../src/rho/lib.rs.html#10-24" title="goto source code">[src]</a></span></h1><pre class="rust fn">pub fn factorize(n: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u64.html">u64</a>&gt;</pre><details class="rustdoc-toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Performs Pollard’s rho algorithm.</p>
+</div></details></section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../" data-current-crate="rho" data-search-index-js="../search-index.js" data-search-js="../search.js"></div>
+    <script src="../main.js"></script></body></html>
